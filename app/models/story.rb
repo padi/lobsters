@@ -114,7 +114,7 @@ class Story < ActiveRecord::Base
     # if a previous submission was moderated, return it to block it from being
     # submitted again
     if s = Story.where(:url => urls).
-    where("is_expired = ? OR is_moderated = ?", false, true).
+    where("is_expired = ? OR is_moderated = ?", 0, 1).
     order("id DESC").first
       return s
     end
